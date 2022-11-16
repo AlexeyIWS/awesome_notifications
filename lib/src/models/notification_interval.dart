@@ -13,11 +13,13 @@ class NotificationInterval extends NotificationSchedule {
   NotificationInterval(
       {required this.interval,
       String? timeZone,
+      int? notificationId,
       bool allowWhileIdle = false,
       bool repeats = false,
       bool preciseAlarm = false})
       : super(
             timeZone: timeZone ?? AwesomeNotifications.localTimeZoneIdentifier,
+            notificationId: notificationId,
             allowWhileIdle: allowWhileIdle,
             repeats: repeats,
             preciseAlarm: preciseAlarm);

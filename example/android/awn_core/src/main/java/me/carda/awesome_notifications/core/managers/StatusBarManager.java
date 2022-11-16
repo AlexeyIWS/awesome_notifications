@@ -81,13 +81,16 @@ public class StatusBarManager {
 
         registerActiveNotification(notificationModel, notificationModel.content.id);
 
+        int id = notificationModel.schedue.notificationId != null
+                ? notificationModel.schedue.notificationId
+                : notificationModel.content.id;
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             NotificationManager notificationManager = getNotificationManager(context);
-            notificationManager.notify(notificationModel.content.id, notification);
+            notificationManager.notify(id, notification);
         }
         else {
             NotificationManagerCompat notificationManagerCompat = getAdaptedOldNotificationManager(context);
-            notificationManagerCompat.notify(String.valueOf(notificationModel.content.id), notificationModel.content.id, notification);
+            notificationManagerCompat.notify(String.valueOf(id), id, notification);
         }
     }
 

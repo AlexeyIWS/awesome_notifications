@@ -11,6 +11,7 @@ import '../definitions.dart';
 abstract class NotificationSchedule extends Model {
   NotificationSchedule(
       {required this.timeZone,
+      this.notificationId,
       this.allowWhileIdle = false,
       this.repeats = false,
       this.preciseAlarm = false});
@@ -22,6 +23,9 @@ abstract class NotificationSchedule extends Model {
 
   /// Full time zone identifier to schedule a notification, in english (ex: America/Sao_Paulo, America/New_York, Europe/Helsinki or GMT-07:00)
   String timeZone;
+
+  /// Overrides default id for union several NotificationSchedule items by same notification id
+  int? notificationId;
 
   /// Displays the notification, even when the device is low battery
   bool allowWhileIdle;
@@ -38,6 +42,9 @@ abstract class NotificationSchedule extends Model {
     timeZone = AwesomeAssertUtils.extractValue(
             NOTIFICATION_SCHEDULE_TIMEZONE, mapData, String) ??
         false;
+
+    notificationId = AwesomeAssertUtils.extractValue(
+        NOTIFICATION_SCHEDULE_NOTIFICATION_ID, mapData, int);
 
     allowWhileIdle = AwesomeAssertUtils.extractValue(
             NOTIFICATION_ALLOW_WHILE_IDLE, mapData, bool) ??
@@ -58,6 +65,7 @@ abstract class NotificationSchedule extends Model {
   Map<String, dynamic> toMap() {
     Map<String, dynamic> dataMap = {
       NOTIFICATION_SCHEDULE_TIMEZONE: timeZone,
+      NOTIFICATION_SCHEDULE_NOTIFICATION_ID: notificationId,
       NOTIFICATION_ALLOW_WHILE_IDLE: allowWhileIdle,
       NOTIFICATION_SCHEDULE_REPEATS: repeats,
       NOTIFICATION_SCHEDULE_PRECISE_ALARM: preciseAlarm

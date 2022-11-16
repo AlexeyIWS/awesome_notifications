@@ -42,6 +42,7 @@ class NotificationAndroidCrontab extends NotificationSchedule {
       List<DateTime>? preciseSchedules,
       String? crontabExpression,
       String? timeZone,
+      int? notificationId,
       bool allowWhileIdle = false,
       bool repeats = false,
       bool preciseAlarm = false})
@@ -51,6 +52,7 @@ class NotificationAndroidCrontab extends NotificationSchedule {
         _crontabExpression = crontabExpression,
         super(
             timeZone: timeZone ?? AwesomeNotifications.localTimeZoneIdentifier,
+            notificationId: notificationId,
             allowWhileIdle: allowWhileIdle,
             repeats: repeats,
             preciseAlarm: preciseAlarm);
@@ -59,11 +61,13 @@ class NotificationAndroidCrontab extends NotificationSchedule {
   NotificationAndroidCrontab.fromDate(
       {required DateTime date,
       int initialSecond = 0,
+      int? notificationId,
       bool allowWhileIdle = false})
       : super(
             timeZone: date.isUtc
                 ? AwesomeNotifications.utcTimeZoneIdentifier
                 : AwesomeNotifications.localTimeZoneIdentifier,
+            notificationId : notificationId,
             allowWhileIdle: allowWhileIdle,
             repeats: false) {
     _initialDateTime = date;
@@ -72,11 +76,14 @@ class NotificationAndroidCrontab extends NotificationSchedule {
 
   /// Generates a Cron expression to be played only once at year based on a date reference
   NotificationAndroidCrontab.yearly(
-      {required DateTime referenceDateTime, bool allowWhileIdle = false})
+      {required DateTime referenceDateTime,
+        int? notificationId,
+        bool allowWhileIdle = false})
       : super(
             timeZone: referenceDateTime.isUtc
                 ? AwesomeNotifications.utcTimeZoneIdentifier
                 : AwesomeNotifications.localTimeZoneIdentifier,
+            notificationId : notificationId,
             allowWhileIdle: allowWhileIdle,
             repeats: false) {
     _crontabExpression =
@@ -85,11 +92,14 @@ class NotificationAndroidCrontab extends NotificationSchedule {
 
   /// Generates a Cron expression to be played only once at month based on a date reference
   NotificationAndroidCrontab.monthly(
-      {required DateTime referenceDateTime, bool allowWhileIdle = false})
+      {required DateTime referenceDateTime,
+        int? notificationId,
+        bool allowWhileIdle = false})
       : super(
             timeZone: referenceDateTime.isUtc
                 ? AwesomeNotifications.utcTimeZoneIdentifier
                 : AwesomeNotifications.localTimeZoneIdentifier,
+            notificationId : notificationId,
             allowWhileIdle: allowWhileIdle,
             repeats: false) {
     _crontabExpression =
@@ -98,7 +108,9 @@ class NotificationAndroidCrontab extends NotificationSchedule {
 
   /// Generates a Cron expression to be played only once at week based on a date reference
   NotificationAndroidCrontab.weekly(
-      {required DateTime referenceDateTime, bool allowWhileIdle = false})
+      {required DateTime referenceDateTime,
+        int? notificationId,
+        bool allowWhileIdle = false})
       : super(
             timeZone: referenceDateTime.isUtc
                 ? AwesomeNotifications.utcTimeZoneIdentifier
@@ -111,11 +123,14 @@ class NotificationAndroidCrontab extends NotificationSchedule {
 
   /// Generates a Cron expression to be played only once at day based on a date reference
   NotificationAndroidCrontab.daily(
-      {required DateTime referenceDateTime, bool allowWhileIdle = false})
+      {required DateTime referenceDateTime,
+        int? notificationId,
+        bool allowWhileIdle = false})
       : super(
             timeZone: referenceDateTime.isUtc
                 ? AwesomeNotifications.utcTimeZoneIdentifier
                 : AwesomeNotifications.localTimeZoneIdentifier,
+            notificationId : notificationId,
             allowWhileIdle: allowWhileIdle,
             repeats: false) {
     _crontabExpression =
@@ -124,11 +139,14 @@ class NotificationAndroidCrontab extends NotificationSchedule {
 
   /// Generates a Cron expression to be played only once at hour based on a date reference
   NotificationAndroidCrontab.hourly(
-      {required DateTime referenceDateTime, bool allowWhileIdle = false})
+      {required DateTime referenceDateTime,
+        int? notificationId,
+        bool allowWhileIdle = false})
       : super(
             timeZone: referenceDateTime.isUtc
                 ? AwesomeNotifications.utcTimeZoneIdentifier
                 : AwesomeNotifications.localTimeZoneIdentifier,
+            notificationId : notificationId,
             allowWhileIdle: allowWhileIdle,
             repeats: false) {
     _crontabExpression =
@@ -137,11 +155,14 @@ class NotificationAndroidCrontab extends NotificationSchedule {
 
   /// Generates a Cron expression to be played only once at every minute based on a date reference
   NotificationAndroidCrontab.minutely(
-      {required DateTime referenceDateTime, bool allowWhileIdle = false})
+      {required DateTime referenceDateTime,
+        int? notificationId,
+        bool allowWhileIdle = false})
       : super(
             timeZone: referenceDateTime.isUtc
                 ? AwesomeNotifications.utcTimeZoneIdentifier
                 : AwesomeNotifications.localTimeZoneIdentifier,
+            notificationId : notificationId,
             allowWhileIdle: allowWhileIdle,
             repeats: false) {
     _crontabExpression =
@@ -150,11 +171,14 @@ class NotificationAndroidCrontab extends NotificationSchedule {
 
   /// Generates a Cron expression to be played only on workweek days based on a date reference
   NotificationAndroidCrontab.workweekDay(
-      {required DateTime referenceDateTime, bool allowWhileIdle = false})
+      {required DateTime referenceDateTime,
+        int? notificationId,
+        bool allowWhileIdle = false})
       : super(
             timeZone: referenceDateTime.isUtc
                 ? AwesomeNotifications.utcTimeZoneIdentifier
                 : AwesomeNotifications.localTimeZoneIdentifier,
+            notificationId : notificationId,
             allowWhileIdle: allowWhileIdle,
             repeats: false) {
     _crontabExpression =
@@ -163,11 +187,14 @@ class NotificationAndroidCrontab extends NotificationSchedule {
 
   /// Generates a Cron expression to be played only on weekend days based on a date reference
   NotificationAndroidCrontab.weekendDay(
-      {required DateTime referenceDateTime, bool allowWhileIdle = false})
+      {required DateTime referenceDateTime,
+        int? notificationId,
+        bool allowWhileIdle = false})
       : super(
             timeZone: referenceDateTime.isUtc
                 ? AwesomeNotifications.utcTimeZoneIdentifier
                 : AwesomeNotifications.localTimeZoneIdentifier,
+            notificationId : notificationId,
             allowWhileIdle: allowWhileIdle,
             repeats: false) {
     _crontabExpression =

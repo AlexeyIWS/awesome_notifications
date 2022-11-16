@@ -65,11 +65,13 @@ class NotificationCalendar extends NotificationSchedule {
     this.weekOfMonth,
     this.weekOfYear,
     String? timeZone,
+    int? notificationId,
     bool allowWhileIdle = false,
     bool preciseAlarm = false,
     bool repeats = false,
   }) : super(
             timeZone: timeZone ?? AwesomeNotifications.localTimeZoneIdentifier,
+            notificationId : notificationId,
             allowWhileIdle: allowWhileIdle,
             repeats: repeats,
             preciseAlarm: preciseAlarm) {
@@ -81,6 +83,7 @@ class NotificationCalendar extends NotificationSchedule {
   /// Initialize a notification schedule calendar based on a date object
   NotificationCalendar.fromDate(
       {required DateTime date,
+      int? notificationId,
       bool allowWhileIdle = false,
       bool repeats = false,
       bool preciseAlarm = false})
@@ -88,6 +91,7 @@ class NotificationCalendar extends NotificationSchedule {
             timeZone: date.isUtc
                 ? AwesomeNotifications.utcTimeZoneIdentifier
                 : AwesomeNotifications.localTimeZoneIdentifier,
+            notificationId: notificationId,
             allowWhileIdle: allowWhileIdle,
             repeats: repeats,
             preciseAlarm: preciseAlarm) {

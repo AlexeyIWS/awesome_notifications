@@ -17,6 +17,7 @@ import me.carda.awesome_notifications.core.utils.CalendarUtils;
 public abstract class NotificationScheduleModel extends AbstractModel {
 
     public TimeZone timeZone;
+    public Integer notificationId;
     public Calendar createdDate;
 
     /// Specify false to deliver the notification one time. Specify true to reschedule the notification request each time the notification is delivered.
@@ -29,6 +30,7 @@ public abstract class NotificationScheduleModel extends AbstractModel {
     @NonNull
     public NotificationScheduleModel fromMap(Map<String, Object> arguments) {
         timeZone       = getValueOrDefault(arguments, Definitions.NOTIFICATION_SCHEDULE_TIMEZONE, TimeZone.class, TimeZone.getDefault());
+        notificationId = getValueOrDefault(arguments, Definitions.NOTIFICATION_SCHEDULE_NOTIFICATION_ID, Integer.class, null);
         createdDate    = getValueOrDefault(arguments, Definitions.NOTIFICATION_CREATED_DATE, Calendar.class, null);
         repeats        = getValueOrDefault(arguments, Definitions.NOTIFICATION_SCHEDULE_REPEATS, Boolean.class, false);
         allowWhileIdle = getValueOrDefault(arguments, Definitions.NOTIFICATION_ALLOW_WHILE_IDLE, Boolean.class, false);
@@ -42,6 +44,7 @@ public abstract class NotificationScheduleModel extends AbstractModel {
         Map<String, Object> dataMap = new HashMap<>();
 
         putDataOnSerializedMap(Definitions.NOTIFICATION_SCHEDULE_TIMEZONE, dataMap, timeZone);
+        putDataOnSerializedMap(Definitions.NOTIFICATION_SCHEDULE_NOTIFICATION_ID, dataMap, notificationId);
         putDataOnSerializedMap(Definitions.NOTIFICATION_CREATED_DATE, dataMap, createdDate);
         putDataOnSerializedMap(Definitions.NOTIFICATION_SCHEDULE_REPEATS, dataMap, repeats);
         putDataOnSerializedMap(Definitions.NOTIFICATION_ALLOW_WHILE_IDLE, dataMap, allowWhileIdle);
