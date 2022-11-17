@@ -757,7 +757,7 @@ public class NotificationBuilder {
 
     private void setTitle(NotificationModel notificationModel, NotificationChannelModel channelModel, NotificationCompat.Builder builder) {
         if (notificationModel.content.title != null) {
-            builder.setContentTitle(String.valueOf(notificationModel.schedule.notificationId));
+            builder.setContentTitle(HtmlUtils.fromHtml(notificationModel.content.title));
         }
     }
 
