@@ -78,12 +78,12 @@ public class StatusBarManager {
     }
 
     public void showNotificationOnStatusBar(@NonNull Context context, NotificationModel notificationModel, Notification notification) throws Exception {
-
-        registerActiveNotification(notificationModel, notificationModel.content.id);
-
         int id = notificationModel.schedue.notificationId != null
                 ? notificationModel.schedue.notificationId
                 : notificationModel.content.id;
+
+        registerActiveNotification(notificationModel, id);
+
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             NotificationManager notificationManager = getNotificationManager(context);
             notificationManager.notify(id, notification);
